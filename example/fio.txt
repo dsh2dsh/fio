@@ -1,0 +1,23 @@
+For: {{.BeginDateString}} - {{.EndDateString}}
+---------------------------------------------------------------------------
+{{- range $sect := .SortedSections}}
+  {{printf "%-28.28s" .Name}} {{printf "%12.02f" .Money}} {{printf "%5d" .Count}}
+  {{- .PerMonthString "%12.02f per month"}}
+{{- end}}
+---------------------------------------------------------------------------
+Sum: {{printf "%.02f" .Money}} ({{.Count}})
+{{- .PerMonthString ", %.02f per month"}}
+
+{{- define "printItem" -}}
+{{.Name}}: {{printf "%.02f" .Money}} ({{.Count}})
+{{- .PerMonthString ", %.02f per month"}}
+{{- end}}
+
+{{range $sect := .SortedSections}}
+{{- template "printItem" $sect}}
+---------------------------------------------------------------------------
+{{- range $item := .SortedItems}}
+  {{template "printItem" $item}}
+{{- end}}
+
+{{end -}}
