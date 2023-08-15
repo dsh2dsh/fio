@@ -1,6 +1,7 @@
 # Fio banka report generator
 
-This program reads a CSV file or stdin, processes it and outputs an aggreagated report of your expenses.
+This program reads a CSV file or stdin, processes it and outputs an aggreagated
+report of your expenses.
 
 ```
 Usage:
@@ -24,4 +25,5 @@ It expects a CSV file, downloaded from Fio banka, with next fields:
 * Poznámka
 * VS
 
-Using a config file, `.fio.yaml` by default, it parses the CSV, aggregates transactions by rules from config file and outputs report to stdout.
+Using a config file, `.fio.yaml` by default, it parses the CSV, aggregates
+transactions by rules from config file and outputs report to stdout.
