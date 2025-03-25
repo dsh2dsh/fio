@@ -167,7 +167,7 @@ func (self *SectionRule) compileOneTemplate(tmpl string) (*template.Template, er
 		return nil, fmt.Errorf("compile %q: %w", tmpl, err)
 	}
 
-	nodes := t.Tree.Root.Nodes
+	nodes := t.Root.Nodes
 	if len(nodes) == 0 {
 		return nil, nil
 	}

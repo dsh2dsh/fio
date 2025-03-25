@@ -1,6 +1,7 @@
 package app
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -68,7 +69,7 @@ func (self *Report) Print() error {
 	if err != nil {
 		return fmt.Errorf("expand home dir in %q: %w", self.cfg.Template, err)
 	} else if tmplPath == "" {
-		return fmt.Errorf("'template' not defined or expanded to empty string")
+		return errors.New("'template' not defined or expanded to empty string")
 	}
 
 	tmpl, err := template.ParseFiles(tmplPath)
