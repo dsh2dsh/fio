@@ -117,7 +117,7 @@ func (self *SectionRule) templatedKey(rec Record) (string, error) {
 	return strings.Trim(b.String(), " "), nil
 }
 
-func (self *SectionRule) compile(sectName string, idx int) error {
+func (self *SectionRule) Compile(sectName string, idx int) error {
 	if self.Re == "" && self.Key == "" && self.Account == "" {
 		return fmt.Errorf(
 			"config compile: section %q, rule %d: both key and account empty",
@@ -128,11 +128,11 @@ func (self *SectionRule) compile(sectName string, idx int) error {
 		return err
 	}
 
-	if reCompiled, err := regexp.Compile(self.Re); err != nil {
+	reCompiled, err := regexp.Compile("(?i)" + self.Re)
+	if err != nil {
 		return fmt.Errorf("re compile %q: %w", self.Re, err)
-	} else {
-		self.reCompiled = reCompiled
 	}
+	self.reCompiled = reCompiled
 
 	return nil
 }

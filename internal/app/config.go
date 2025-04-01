@@ -48,7 +48,7 @@ func (self *Config) compile() error {
 	for _, sect := range self.Sections {
 		self.sectionIndex[sect.Name] = sect
 		for i, rule := range sect.Rules {
-			if err := rule.compile(sect.Name, i); err != nil {
+			if err := rule.Compile(sect.Name, i); err != nil {
 				return err
 			}
 		}
